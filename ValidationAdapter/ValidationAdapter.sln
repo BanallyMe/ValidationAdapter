@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationAdapter.UnitTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationAdapter.AspNetCore", "ValidationAdapter.AspNetCore\ValidationAdapter.AspNetCore.csproj", "{430D6B0F-2763-4B7D-AD1A-7F08094E3600}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationAdapter.AspNetCore.UnitTests", "ValidationAdapter.AspNetCore.UnitTests\ValidationAdapter.AspNetCore.UnitTests.csproj", "{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{430D6B0F-2763-4B7D-AD1A-7F08094E3600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{430D6B0F-2763-4B7D-AD1A-7F08094E3600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{430D6B0F-2763-4B7D-AD1A-7F08094E3600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

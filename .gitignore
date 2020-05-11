@@ -12,3 +12,5 @@
 /ValidationAdapter/ValidationAdapter.AspNetCore/obj
 /ValidationAdapter/ValidationAdapter.AspNetCore/bin
 /ValidationAdapter/ValidationAdapter.AspNetCore/nuget.config
+/ValidationAdapter/ValidationAdapter.AspNetCore.UnitTests/obj
+/ValidationAdapter/ValidationAdapter.AspNetCore.UnitTests/bin
