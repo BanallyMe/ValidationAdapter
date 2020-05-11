@@ -7,7 +7,7 @@
     <Description>Unit-Tests for package BanallyMe.ValidationAdapter</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>0.0.1</Version>
+    <Version>0.1.0</Version>
     <Company />
     <Authors>BanallyMe</Authors>
   </PropertyGroup>
