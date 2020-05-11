@@ -9,3 +9,6 @@
 /ValidationAdapter/ValidationAdapter.UnitTests/obj
 /ValidationAdapter/ValidationAdapter.UnitTests/bin
 /ValidationAdapter/ValidationAdapter/nuget.config
+/ValidationAdapter/ValidationAdapter.AspNetCore/obj
+/ValidationAdapter/ValidationAdapter.AspNetCore/bin
+/ValidationAdapter/ValidationAdapter.AspNetCore/nuget.config
