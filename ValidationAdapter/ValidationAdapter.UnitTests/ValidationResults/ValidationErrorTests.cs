@@ -3,7 +3,7 @@ using FluentAssertions;
 using System;
 using Xunit;
 
-namespace BanallyMe.ValidationAdapter.UnitTests.ValidationErrors
+namespace BanallyMe.ValidationAdapter.UnitTests.ValidationResults
 {
     public class ValidationErrorTests
     {

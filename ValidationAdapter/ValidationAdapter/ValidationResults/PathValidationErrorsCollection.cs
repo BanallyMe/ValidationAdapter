@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,6 +37,7 @@ namespace BanallyMe.ValidationAdapter.ValidationResults
         /// <param name="errorMessages">Collection of error messages that should be added for this path.</param>
         /// <param name="path">Path to the model's property that this collection of errors refers to.</param>
         /// <returns>The requested collection of errors for the path.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if parameter errorMessages is null.</exception>
         public static PathValidationErrorsCollection CreateWithErrorsAtPath(IEnumerable<string> errorMessages, string path)
             => new PathValidationErrorsCollection(path, errorMessages.ToArray());
 
@@ -44,6 +46,7 @@ namespace BanallyMe.ValidationAdapter.ValidationResults
         /// </summary>
         /// <param name="index">Index for which the error message is requested.</param>
         /// <returns>Error message at this index.</returns>
+        /// <exception cref="IndexOutOfRangeException">Thrown if the requested index is out of the collections boundaries.</exception>
         public string this[int index]
         {
             get { return ErrorMessages[index]; }

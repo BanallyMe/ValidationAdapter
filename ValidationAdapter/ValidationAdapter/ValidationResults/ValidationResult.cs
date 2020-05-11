@@ -41,8 +41,12 @@ namespace BanallyMe.ValidationAdapter.ValidationResults
         /// </summary>
         /// <param name="validationErrors">Errors that should be contained in this validation result.</param>
         /// <returns>The validation result containing all passed errors.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if parameter validationErrors is null.</exception>
         public static ValidationResult CreateInvalidResultFromValidationErrors(IEnumerable<ValidationError> validationErrors)
         {
+            if (validationErrors is null)
+                throw new ArgumentNullException(nameof(validationErrors));
+
             var pathErrors = validationErrors.GroupBy(error => error.ErrorPath)
                 .Select(errorGroup => PathValidationErrorsCollection.CreateWithErrorsAtPath(errorGroup.Select(error => error.ErrorMessage), errorGroup.Key));
 
