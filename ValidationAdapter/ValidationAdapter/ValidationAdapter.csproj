@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>BanallyMe.ValidationAdapter</AssemblyName>
@@ -9,7 +9,9 @@
     <Description>.NET library to provide adapting interfaces to validationg functionalitites of different frameworks.</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
+    <PackageProjectUrl>https://github.com/BanallyMe/ValidationAdapter</PackageProjectUrl>
     <RepositoryUrl>https://github.com/BanallyMe/ValidationAdapter</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -20,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
