@@ -1,4 +1,4 @@
-﻿using BanallyMe.ValidationAdapter.ValidationErrors;
+﻿using BanallyMe.ValidationAdapter.ValidationResults;
 using FluentAssertions;
 using System;
 using Xunit;

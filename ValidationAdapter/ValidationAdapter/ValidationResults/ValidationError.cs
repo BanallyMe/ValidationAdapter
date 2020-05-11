@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BanallyMe.ValidationAdapter.ValidationErrors
+namespace BanallyMe.ValidationAdapter.ValidationResults
 {
     /// <summary>
     /// Container for errors that occured while validating.
