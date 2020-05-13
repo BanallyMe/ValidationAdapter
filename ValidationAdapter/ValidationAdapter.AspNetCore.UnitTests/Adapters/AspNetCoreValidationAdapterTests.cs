@@ -90,6 +90,29 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.Adapters
             foundErrors.Should().BeEquivalentTo(expectedErrors);
         }
 
+        [Fact]
+        public void Validate_ReturnsValidResultIfNoErrorsPresent()
+        {
+            AddActionContextWithoutErrorsToAccessor();
+            var expectedResult = ValidationResult.CreateValidResult();
+
+            var validationResult = testedAdapter.Validate();
+
+            validationResult.Should().BeEquivalentTo(expectedResult);
+        }
+
+        [Fact]
+        public void Validate_ReturnsErroneousResultWithAllErrors()
+        {
+            AddActionContextWithErrorsToAccessor();
+            var expectedErrors = FakeValidationErrors.Select(CreateValidationErrorFromFakeError);
+            var expectedResult = ValidationResult.CreateInvalidResultFromValidationErrors(expectedErrors);
+
+            var validationResult = testedAdapter.Validate();
+
+            validationResult.Should().BeEquivalentTo(expectedResult);
+        }
+
         private (string path, string errorMessage)[] FakeValidationErrors => new[]
         {
             ("", "Global testerror"),

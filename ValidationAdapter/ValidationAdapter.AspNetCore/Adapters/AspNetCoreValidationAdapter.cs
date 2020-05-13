@@ -32,11 +32,18 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.Adapters
         /// <inheritdoc />
         public bool HasValidationErrors() => !contextAccessor.ActionContext.ModelState.IsValid;
 
+        /// <inheritdoc />
+        public ValidationResult Validate()
+        {
+            return HasValidationErrors()
+                ? ValidationResult.CreateInvalidResultFromValidationErrors(GetAllValidationErrors())
+                : ValidationResult.CreateValidResult();
+        }
+
         private static IEnumerable<ValidationError> ReadValidationErrorsFromModelStateEntry(KeyValuePair<string, ModelStateEntry> modelStateEntry)
             => modelStateEntry.Value.Errors.Select(error => ValidationError.CreateErrorAtPath(error.ErrorMessage, modelStateEntry.Key));
 
         private static bool ModelStateEntryIsAtPath(KeyValuePair<string, ModelStateEntry> modelStateEntry, string path)
             => modelStateEntry.Key == path;
-
     }
 }
