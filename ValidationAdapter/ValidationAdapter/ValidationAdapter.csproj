@@ -5,7 +5,7 @@
     <RootNamespace>BanallyMe.ValidationAdapter</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>BanallyMe</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Description>.NET library to provide adapting interfaces to validationg functionalitites of different frameworks.</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>

@@ -26,5 +26,11 @@ namespace BanallyMe.ValidationAdapter.Adapters
         /// <param name="path">Path to the property of the model, whose validation errors are requested.</param>
         /// <returns>All errors that could be found for the passed error path.</returns>
         public IEnumerable<ValidationError> GetValidationErrorsAtPath(string errorPath);
+
+        /// <summary>
+        /// Validates the model inside this validation adapter and returns the result of this validation.
+        /// </summary>
+        /// <returns>The result of the validation.</returns>
+        public ValidationResult Validate();
     }
 }
