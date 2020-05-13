@@ -1,8 +1,9 @@
 ﻿using BanallyMe.ValidationAdapter.Adapters;
 using BanallyMe.ValidationAdapter.ValidationResults;
-using Microsoft.AspNetCore.Http;
-using System;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BanallyMe.ValidationAdapter.AspNetCore.Adapters
 {
@@ -11,29 +12,31 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.Adapters
     /// </summary>
     public class AspNetCoreValidationAdapter : IValidationAdapter
     {
-        private readonly IHttpContextAccessor contextAccessor;
+        private readonly IActionContextAccessor contextAccessor;
 
-        public AspNetCoreValidationAdapter(IHttpContextAccessor contextAccessor)
+        public AspNetCoreValidationAdapter(IActionContextAccessor contextAccessor)
         {
             this.contextAccessor = contextAccessor;
         }
 
         /// <inheritdoc />
         public IEnumerable<ValidationError> GetAllValidationErrors()
-        {
-            throw new NotImplementedException();
-        }
+            => contextAccessor.ActionContext.ModelState.SelectMany(ReadValidationErrorsFromModelStateEntry);
 
         /// <inheritdoc />
         public IEnumerable<ValidationError> GetValidationErrorsAtPath(string errorPath)
-        {
-            throw new NotImplementedException();
-        }
+            => contextAccessor.ActionContext.ModelState
+                .Where(stateEntry => ModelStateEntryIsAtPath(stateEntry, errorPath))
+                .SelectMany(ReadValidationErrorsFromModelStateEntry);
 
         /// <inheritdoc />
-        public bool HasValidationErrors()
-        {
-            throw new NotImplementedException();
-        }
+        public bool HasValidationErrors() => !contextAccessor.ActionContext.ModelState.IsValid;
+
+        private static IEnumerable<ValidationError> ReadValidationErrorsFromModelStateEntry(KeyValuePair<string, ModelStateEntry> modelStateEntry)
+            => modelStateEntry.Value.Errors.Select(error => ValidationError.CreateErrorAtPath(error.ErrorMessage, modelStateEntry.Key));
+
+        private static bool ModelStateEntryIsAtPath(KeyValuePair<string, ModelStateEntry> modelStateEntry, string path)
+            => modelStateEntry.Key == path;
+
     }
 }
