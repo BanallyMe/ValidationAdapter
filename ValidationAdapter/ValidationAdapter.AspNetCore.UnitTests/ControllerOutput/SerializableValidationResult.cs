@@ -11,11 +11,11 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ControllerOutput
         /// <summary>
         /// Path to the model's property, this result is referring to.
         /// </summary>
-        public string path { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
         /// Collection of all error messages, that the validation of this path produced.
         /// </summary>
-        public IEnumerable<string> errorMessages { get; set; }
+        public IEnumerable<string> ErrorMessages { get; set; }
     }
 }
