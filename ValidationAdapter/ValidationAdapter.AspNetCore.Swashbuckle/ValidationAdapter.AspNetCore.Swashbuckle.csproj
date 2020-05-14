@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>BanallyMe.ValidationAdapter.AspNetCore.Swashbuckle</AssemblyName>
+    <RootNamespace>BanallyMe.ValidationAdapter.AspNetCore.Swashbuckle</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>BanallyMe</Authors>
+    <Version>0.1.0</Version>
+    <Description>Extension for integrating package BanallyMe.ValidationAdapter.AspNetCore into Swashbuckle.AspNetCore.</Description>
+    <Copyright>2020 BanallyMe</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageProjectUrl>https://github.com/BanallyMe/ValidationAdapter</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BanallyMe/ValidationAdapter</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netstandard2.0</TargetFrameworks>
+    <Nullable>Enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <NoWarn>CA1303;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BanallyMe.ValidationAdapter.AspNetCore" Version="0.1.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+  </ItemGroup>
+
+</Project>

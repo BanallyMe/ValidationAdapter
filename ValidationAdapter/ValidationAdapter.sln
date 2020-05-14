@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationAdapter", "Valida
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationAdapter.UnitTests", "ValidationAdapter.UnitTests\ValidationAdapter.UnitTests.csproj", "{6110BC9F-01BE-4965-8830-527115B28DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationAdapter.AspNetCore", "ValidationAdapter.AspNetCore\ValidationAdapter.AspNetCore.csproj", "{430D6B0F-2763-4B7D-AD1A-7F08094E3600}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationAdapter.AspNetCore", "ValidationAdapter.AspNetCore\ValidationAdapter.AspNetCore.csproj", "{430D6B0F-2763-4B7D-AD1A-7F08094E3600}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationAdapter.AspNetCore.UnitTests", "ValidationAdapter.AspNetCore.UnitTests\ValidationAdapter.AspNetCore.UnitTests.csproj", "{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationAdapter.AspNetCore.UnitTests", "ValidationAdapter.AspNetCore.UnitTests\ValidationAdapter.AspNetCore.UnitTests.csproj", "{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationAdapter.AspNetCore.Swashbuckle", "ValidationAdapter.AspNetCore.Swashbuckle\ValidationAdapter.AspNetCore.Swashbuckle.csproj", "{4529C1BC-449A-4EE3-9639-1C9B65E2FC0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationAdapter.AspNetCore.Swashbuckle.UnitTests", "ValidationAdapter.AspNetCore.Swashbuckle.UnitTests\ValidationAdapter.AspNetCore.Swashbuckle.UnitTests.csproj", "{AD7D56F0-4147-473B-9A94-FC7FB4550541}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D9FBAA-CEA9-4F62-8409-A6D648BA3C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4529C1BC-449A-4EE3-9639-1C9B65E2FC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4529C1BC-449A-4EE3-9639-1C9B65E2FC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4529C1BC-449A-4EE3-9639-1C9B65E2FC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4529C1BC-449A-4EE3-9639-1C9B65E2FC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD7D56F0-4147-473B-9A94-FC7FB4550541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7D56F0-4147-473B-9A94-FC7FB4550541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7D56F0-4147-473B-9A94-FC7FB4550541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7D56F0-4147-473B-9A94-FC7FB4550541}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

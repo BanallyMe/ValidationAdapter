@@ -14,3 +14,8 @@
 /ValidationAdapter/ValidationAdapter.AspNetCore/nuget.config
 /ValidationAdapter/ValidationAdapter.AspNetCore.UnitTests/obj
 /ValidationAdapter/ValidationAdapter.AspNetCore.UnitTests/bin
+/ValidationAdapter/ValidationAdapter.AspNetCore.Swashbuckle/obj
+/ValidationAdapter/ValidationAdapter.AspNetCore.Swashbuckle/bin
+/ValidationAdapter/ValidationAdapter.AspNetCore.Swashbuckle/nuget.config
+/ValidationAdapter/ValidationAdapter.AspNetCore.Swashbuckle.UnitTests/obj
+/ValidationAdapter/ValidationAdapter.AspNetCore.Swashbuckle.UnitTests/bin
