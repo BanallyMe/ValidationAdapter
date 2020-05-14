@@ -15,6 +15,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <NoWarn>CA1707;</NoWarn>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
