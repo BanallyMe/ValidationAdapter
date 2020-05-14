@@ -1,5 +1,10 @@
 ﻿using BanallyMe.ValidationAdapter.Adapters;
+using BanallyMe.ValidationAdapter.AspNetCore.ControllerOutput;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BanallyMe.ValidationAdapter.AspNetCore.ActionFilters.AutomaticValidation
 {
@@ -19,10 +24,18 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.ActionFilters.AutomaticValidati
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (validationAdapter.HasValidationErrors())
+            if (context != null && validationAdapter.HasValidationErrors())
             {
-
+                var outputBody = ConvertValidationResultToControllerOutput();
+                context.Result = new UnprocessableEntityObjectResult(outputBody);
             }
+        }
+
+        private IEnumerable<SerializableValidationResult> ConvertValidationResultToControllerOutput()
+        {
+            var validationResult = validationAdapter.Validate();
+
+            return validationResult.ValidationErrors.Select(error => new SerializableValidationResult { Path = error.Path, ErrorMessages = error });
         }
     }
 }

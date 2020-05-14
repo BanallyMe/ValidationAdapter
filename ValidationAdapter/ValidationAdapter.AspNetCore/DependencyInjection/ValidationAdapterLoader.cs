@@ -1,4 +1,5 @@
 ﻿using BanallyMe.ValidationAdapter.Adapters;
+using BanallyMe.ValidationAdapter.AspNetCore.ActionFilters.AutomaticValidation;
 using BanallyMe.ValidationAdapter.AspNetCore.Adapters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.DependencyInjection
         {
             services.TryAddTransient<IActionContextAccessor, ActionContextAccessor>();
             services.TryAddTransient<IValidationAdapter, AspNetCoreValidationAdapter>();
+            services.TryAddTransient<AutoValidateAttribute>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BanallyMe.ValidationAdapter.Adapters;
+using BanallyMe.ValidationAdapter.AspNetCore.ActionFilters.AutomaticValidation;
 using BanallyMe.ValidationAdapter.AspNetCore.Adapters;
 using BanallyMe.ValidationAdapter.AspNetCore.DependencyInjection;
 using FluentAssertions;
@@ -54,14 +55,36 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.DependencyInjection
             fakeServiceCollection.Where(ServiceIsAspNetCoreValidationAdapter).Should().HaveCount(1);
         }
 
+        [Fact]
+        public void AddAspNetCoreValidationAdapter_AddsAutoValidateFilter()
+        {
+            fakeServiceCollection.AddAspNetCoreValidationAdapter();
+
+            fakeServiceCollection.Where(ServiceIsAutoValidateFilter).Should().HaveCount(1);
+        }
+
+        [Fact]
+        public void AddAspNetCoreValidationAdapter_AddsAutoValidateFilterOnlyOnceIfCalledMultipleTimes()
+        {
+            fakeServiceCollection.AddAspNetCoreValidationAdapter();
+            fakeServiceCollection.AddAspNetCoreValidationAdapter();
+            fakeServiceCollection.AddAspNetCoreValidationAdapter();
+
+            fakeServiceCollection.Where(ServiceIsAutoValidateFilter).Should().HaveCount(1);
+        }
+
         private static bool ServiceIsActionContextAccessor(ServiceDescriptor serviceDescriptor)
-            => serviceDescriptor.ServiceType == typeof(IActionContextAccessor)
-                && serviceDescriptor.ImplementationType == typeof(ActionContextAccessor)
-                && serviceDescriptor.Lifetime == ServiceLifetime.Transient;
+            => ServiceIsOfImplementationType<IActionContextAccessor, ActionContextAccessor>(serviceDescriptor);
 
         private static bool ServiceIsAspNetCoreValidationAdapter(ServiceDescriptor serviceDescriptor)
-            => serviceDescriptor.ServiceType == typeof(IValidationAdapter)
-                && serviceDescriptor.ImplementationType == typeof(AspNetCoreValidationAdapter)
+            => ServiceIsOfImplementationType<IValidationAdapter, AspNetCoreValidationAdapter>(serviceDescriptor);
+
+        private static bool ServiceIsAutoValidateFilter(ServiceDescriptor serviceDescriptor)
+            => ServiceIsOfImplementationType<AutoValidateAttribute, AutoValidateAttribute>(serviceDescriptor);
+
+        private static bool ServiceIsOfImplementationType<TServiceType, TImplementationType>(ServiceDescriptor serviceDescriptor)
+            => serviceDescriptor.ServiceType == typeof(TServiceType)
+                && serviceDescriptor.ImplementationType == typeof(TImplementationType)
                 && serviceDescriptor.Lifetime == ServiceLifetime.Transient;
     }
 }
