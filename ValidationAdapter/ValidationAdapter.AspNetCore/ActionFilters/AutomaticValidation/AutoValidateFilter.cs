@@ -2,6 +2,7 @@
 using BanallyMe.ValidationAdapter.AspNetCore.ControllerOutput;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +22,8 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.ActionFilters.AutomaticValidati
             if (context != null && ActionHasAutoValidateAttribute(context) && validationAdapter.HasValidationErrors())
             {
                 var outputBody = ConvertValidationResultToControllerOutput();
-                context.Result = new UnprocessableEntityObjectResult(outputBody);
+                var jsonBody = JsonConvert.SerializeObject(outputBody);
+                context.Result = new UnprocessableEntityObjectResult(jsonBody);
             }
         }
 
