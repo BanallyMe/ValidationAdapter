@@ -15,23 +15,23 @@ using Xunit;
 
 namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ActionFilters.AutomaticValidation
 {
-    public class AutoValidateAttributeTests
+    public class AutoValidateFilterTests
     {
         private readonly Mock<IValidationAdapter> validationAdapterMock;
-        private readonly AutoValidateAttribute testedAttribute;
+        private readonly AutoValidateFilter testedFilter;
 
-        public AutoValidateAttributeTests()
+        public AutoValidateFilterTests()
         {
             validationAdapterMock = new Mock<IValidationAdapter>();
-            testedAttribute = new AutoValidateAttribute(validationAdapterMock.Object);
+            testedFilter = new AutoValidateFilter(validationAdapterMock.Object);
         }
 
         [Fact]
         public void OnActionExecuting_ChecksIfModelIsValid()
         {
-            var fakeContext = CreateFakeExecutingContext();
+            var fakeContext = CreateFakeExecutingContextWithAutoValidateFilter();
 
-            testedAttribute.OnActionExecuting(fakeContext);
+            testedFilter.OnActionExecuting(fakeContext);
 
             validationAdapterMock.Verify(adapter => adapter.HasValidationErrors(), Times.Once);
         }
@@ -39,7 +39,7 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ActionFilters.Automat
         [Fact]
         public void OnActionExecuting_DoesntValidateIfExecutingContextIsNull()
         {
-            testedAttribute.OnActionExecuting(null);
+            testedFilter.OnActionExecuting(null);
 
             validationAdapterMock.Verify(adapter => adapter.HasValidationErrors(), Times.Never);
             validationAdapterMock.Verify(adapter => adapter.Validate(), Times.Never);
@@ -48,9 +48,9 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ActionFilters.Automat
         [Fact]
         public void OnActionExecuting_DoesntSetResultIfModelIsValid()
         {
-            var fakeContext = CreateFakeExecutingContext();
+            var fakeContext = CreateFakeExecutingContextWithAutoValidateFilter();
 
-            testedAttribute.OnActionExecuting(fakeContext);
+            testedFilter.OnActionExecuting(fakeContext);
 
             fakeContext.Result.Should().BeNull();
         }
@@ -59,13 +59,24 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ActionFilters.Automat
         public void OnActionExecuting_SetsResultToErrorObjectIfModelIsInvalid()
         {
             SetupValidationAdapterToContainErrors();
-            var fakeContext = CreateFakeExecutingContext();
+            var fakeContext = CreateFakeExecutingContextWithAutoValidateFilter();
             var expectedControllerOutput = FakeErrorControllerOutput;
 
-            testedAttribute.OnActionExecuting(fakeContext);
+            testedFilter.OnActionExecuting(fakeContext);
 
             fakeContext.Result.Should().BeOfType<UnprocessableEntityObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(expectedControllerOutput);
+        }
+
+        [Fact]
+        public void OnActionExecuting_DoesntSetResultIfActionIsNotDecoratedWithAutoValidate()
+        {
+            SetupValidationAdapterToContainErrors();
+            var fakeContext = CreateFakeExecutingContextWithoutFilters();
+
+            testedFilter.OnActionExecuting(fakeContext);
+
+            fakeContext.Result.Should().BeNull();
         }
 
         private void SetupValidationAdapterToContainErrors()
@@ -86,9 +97,19 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ActionFilters.Automat
         private IEnumerable<SerializableValidationResult> FakeErrorControllerOutput => FakeErrors.GroupBy(error => error.ErrorPath)
                 .Select(errorGroup => new SerializableValidationResult { Path = errorGroup.Key, ErrorMessages = errorGroup.Select(error => error.ErrorMessage) });
 
-        private static ActionExecutingContext CreateFakeExecutingContext()
+        private static ActionExecutingContext CreateFakeExecutingContextWithAutoValidateFilter()
         {
-            var fakeActionContext = new ActionContext(Mock.Of<HttpContext>(), Mock.Of<RouteData>(), Mock.Of<ActionDescriptor>());
+            var fakeContext = CreateFakeExecutingContextWithoutFilters();
+            var autoValidateFilterDescriptor = new FilterDescriptor(new AutoValidateAttribute(), 0);
+            fakeContext.ActionDescriptor.FilterDescriptors.Add(autoValidateFilterDescriptor);
+
+            return fakeContext;
+        }
+
+        private static ActionExecutingContext CreateFakeExecutingContextWithoutFilters()
+        {
+            var fakeActionDescriptor = new ActionDescriptor { FilterDescriptors = new List<FilterDescriptor>() };
+            var fakeActionContext = new ActionContext(Mock.Of<HttpContext>(), Mock.Of<RouteData>(), fakeActionDescriptor);
             var fakeContext = new ActionExecutingContext(fakeActionContext, new List<IFilterMetadata>(), new Dictionary<string, object>(), null);
 
             return fakeContext;
