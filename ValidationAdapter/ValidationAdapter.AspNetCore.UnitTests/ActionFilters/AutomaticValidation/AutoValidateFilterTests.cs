@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Moq;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -65,10 +64,8 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.UnitTests.ActionFilters.Automat
 
             testedFilter.OnActionExecuting(fakeContext);
 
-            fakeContext.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
-            var result = (UnprocessableEntityObjectResult)fakeContext.Result;
-            var resultBody = JsonConvert.DeserializeObject<IEnumerable<SerializableValidationResult>>((string)result.Value);
-            resultBody.Should().BeEquivalentTo(expectedControllerOutput);
+            fakeContext.Result.Should().BeOfType<UnprocessableEntityObjectResult>()
+                .Which.Value.Should().BeEquivalentTo(expectedControllerOutput);
         }
 
         [Fact]
