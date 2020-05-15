@@ -39,7 +39,7 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.Swashbuckle.OperationFilters
         private bool ContextHasAutoValidateAttributes(OperationFilterContext context)
             => GetAutoValidateAttributesFromContext(context).Any();
 
-        private IEnumerable<AutoValidateAttribute> GetAutoValidateAttributesFromContext(OperationFilterContext context)
+        private static IEnumerable<AutoValidateAttribute> GetAutoValidateAttributesFromContext(OperationFilterContext context)
             => context.MethodInfo.ReflectedType.GetCustomAttributes(true)
                 .Union(context.MethodInfo.GetCustomAttributes(true))
                 .OfType<AutoValidateAttribute>();
