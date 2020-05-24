@@ -12,6 +12,7 @@ The project itself emerged from the wish to have an injectable interface for val
 At the moment there is a basic package for defining the rules of the ValidationAdapter interface and an implemetation of this very interface for the ASP.NET Core framework.
 
 [Basic package](#validationadapter_basicpackage)
+
 [ASP.NET Core implementation](#validationadapter_aspcorepackage)
 
 ### Basic package <a id="validationadapter_basicpackage"></a>
