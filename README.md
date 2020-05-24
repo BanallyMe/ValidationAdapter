@@ -12,6 +12,7 @@ The project itself emerged from the wish to have an injectable interface for val
 At the moment there is a basic package for defining the rules of the ValidationAdapter interface and an implemetation of this very interface for the ASP.NET Core framework.
 
 [Basic package](#validationadapter_basicpackage)
+[ASP.NET Core implementation](#validationadapter_aspcorepackage)
 
 ### Basic package <a id="validationadapter_basicpackage"></a>
 The basic package provides an IValidationAdapter interface which provides basic access to validation errors. This interface makes use of three different immutable objects to store information about validation results and errors.
@@ -61,7 +62,7 @@ var validationErrors = GetAllValidationErrors();
 var validationResult = ValidationResult.CreateInvalidResultFromValidationErrors(validationErrors);
 ```
 
-### ASP.NET Core implementation
+### ASP.NET Core implementation <a id="validationadapter_aspcorepackage"></a>
 The ASP.NET Core implementation of the ValidationAdapter contains an implementation of the IValidationAdapter interface residing on top of the ASP.NET Core ModelState.
 Furthermore it provides an ActionFilter to automatically validate user input when a controller action is called. Finally this filter can also hook into [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) to add the result of this filter to generated swagger documentations.
 
