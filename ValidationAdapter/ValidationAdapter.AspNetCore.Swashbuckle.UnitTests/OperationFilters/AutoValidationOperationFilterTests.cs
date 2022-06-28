@@ -39,7 +39,7 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.Swashbuckle.UnitTests.Operation
         {
             var fakeContext = new OperationFilterContext(null, schemaGenerator.Object, null, method);
             var fakeSchema = new OpenApiSchema();
-            schemaGenerator.Setup(gen => gen.GenerateSchema(typeof(SerializableValidationResult), fakeContext.SchemaRepository, null, null)).Returns(fakeSchema);
+            schemaGenerator.Setup(gen => gen.GenerateSchema(typeof(SerializableValidationResult), fakeContext.SchemaRepository, null, null, null)).Returns(fakeSchema);
             var fakeOperation = new OpenApiOperation { Responses = new OpenApiResponses() };
             var expectedAppendedSchema = new OpenApiSchema { Type = "array", Items = fakeSchema };
 
@@ -60,7 +60,7 @@ namespace BanallyMe.ValidationAdapter.AspNetCore.Swashbuckle.UnitTests.Operation
             var fakeContext = new OperationFilterContext(null, schemaGenerator.Object, null, GetAutoValidateDecoratedMethod());
 
             var fakeSchema = new OpenApiSchema();
-            schemaGenerator.Setup(gen => gen.GenerateSchema(typeof(SerializableValidationResult), fakeContext.SchemaRepository, null, null)).Returns(fakeSchema);
+            schemaGenerator.Setup(gen => gen.GenerateSchema(typeof(SerializableValidationResult), fakeContext.SchemaRepository, null, null, null)).Returns(fakeSchema);
 
             var expectedApiResponses = fakeApiResponses.ToArray();
 
