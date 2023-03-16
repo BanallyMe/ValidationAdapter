@@ -4,6 +4,7 @@
     <AssemblyName>BanallyMe.ValidationAdapter.AspNetCore</AssemblyName>
     <RootNamespace>BanallyMe.ValidationAdapter.AspNetCore</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
     <Authors>BanallyMe</Authors>
     <Version>0.2.0</Version>
     <Description>Implementaton of ValidationAdapter for ASP.NET Core.</Description>
