@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <Authors>BanallyMe</Authors>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Description>Implementaton of ValidationAdapter for ASP.NET Core.</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
@@ -16,7 +16,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <TargetFrameworks>net7.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Nullable>Enable</Nullable>
     <LangVersion>latestmajor</LangVersion>
     <NoWarn>CA1303;</NoWarn>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BanallyMe.ValidationAdapter" Version="0.1.1" />
+    <PackageReference Include="BanallyMe.ValidationAdapter" Version="0.2.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
