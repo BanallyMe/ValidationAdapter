@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <Authors>BanallyMe</Authors>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Description>.NET library to provide adapting interfaces to validationg functionalitites of different frameworks.</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>

@@ -7,13 +7,13 @@
     <Description>Unit-Tests for package BanallyMe.ValidationAdapter.AspNetCore</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Company />
     <Authors>BanallyMe</Authors>
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <NoWarn>CA1707;</NoWarn>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

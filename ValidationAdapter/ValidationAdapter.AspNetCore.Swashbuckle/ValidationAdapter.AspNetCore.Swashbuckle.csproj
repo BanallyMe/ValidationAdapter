@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <Authors>BanallyMe</Authors>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <Description>Extension for integrating package BanallyMe.ValidationAdapter.AspNetCore into Swashbuckle.AspNetCore.</Description>
     <Copyright>2020 BanallyMe</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
@@ -16,7 +16,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFrameworks>net9.0</TargetFrameworks>
     <Nullable>Enable</Nullable>
     <LangVersion>latest</LangVersion>
     <NoWarn>CA1303;</NoWarn>
